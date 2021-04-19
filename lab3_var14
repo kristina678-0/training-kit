@@ -1,0 +1,90 @@
+// 3.1. Дан массив символов. Удалить все (:) и подсчитать количество удалённых символов .
+
+
+#include <iostream>
+#include <string.h>
+#include <algorithm>
+ 
+using namespace std;
+ 
+int main()
+{
+    char b[100];
+    int k;
+    cout << "Введите строку:" << endl;
+    gets(b);
+    k = 0;
+    for (int i = strlen(b); i--;)
+    {
+        if (b[i] == ':')
+            k++;
+    }
+    remove(b, b + sizeof(b) / sizeof(char), ':');
+    cout << "Строка после удаления:" << endl;
+    puts(b);
+    cout << "Количество удаленных символов: " << k << endl;
+    system("pause");
+    return 0;
+}
+ 
+//3.2. Дан массив символов, среди которых есть одна открывающаяся и одна закрывающаяся скобка.Вывести на экран все символы расположенные внутри этих скобок.
+
+#include<iostream>
+#include<cstring>
+#include<conio.h>
+ 
+using namespace std;
+ 
+int main() {
+    char string[100];
+    cout << "vvedite stroku: ";
+    cin >> string;
+    int i = 0;
+    bool flag = false;
+    cout << "Source string : " << string << endl;
+    cout << "Substring that is situated between (): ";
+    while(string[i] != '\0') {
+        if(string[i] == '(') {
+            flag = true;
+            i++;
+        }
+        if(string[i] == ')') {
+            flag = false;
+        }
+        if(flag)
+            cout << string[i];
+        i++;
+    }
+    cout << endl;
+    getch();
+}
+
+
+
+// 3.3 Ввести массив символов, содержащий текст.Определить длину самого короткого слова и самого длинного слова. 
+
+
+#include <iostream> 
+#include <string> 
+#include <sstream> 
+using namespace std;
+ 
+int main() 
+{
+    size_t max = 0;
+    string s, word;
+    cout << "Text:\n";
+    getline(cin, s);
+    size_t min = s.size();
+    
+    stringstream str(s);
+    while (str >> word) 
+    {
+        if (word.size() > max) max = word.size();
+        if (word.size() < min) min = word.size();        
+    }
+    
+    cout << "max=" << max << "\n" << "min=" << min << "\n";
+system("pause");
+return 0;
+}
